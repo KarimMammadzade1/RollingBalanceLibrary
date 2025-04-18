@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.Interpolator
 import android.widget.FrameLayout
+import androidx.annotation.RestrictTo
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -21,7 +22,7 @@ import androidx.recyclerview.widget.RecyclerView
  * @property defStyleAttr Default style attributes for the view, used when the view is instantiated.
  */
 
-// TODO: find a way to hide from XML
+@RestrictTo(RestrictTo.Scope.LIBRARY)
 internal class RollingBalanceItemView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
