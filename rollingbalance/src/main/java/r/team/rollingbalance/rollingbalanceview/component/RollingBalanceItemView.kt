@@ -12,6 +12,15 @@ import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 
+/**
+ * A custom `RecyclerView` that is designed to display the rolling balance items.
+ * This view is intended for use within the library to handle custom layouts for balance display.
+ *
+ * @property context The context associated with this view, used for resource access and layout inflation.
+ * @property attrs Optional attribute set passed from XML layout files to customize the view's behavior.
+ * @property defStyleAttr Default style attributes for the view, used when the view is instantiated.
+ */
+
 // TODO: find a way to hide from XML
 internal class RollingBalanceItemView @JvmOverloads constructor(
     context: Context,

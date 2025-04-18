@@ -19,6 +19,15 @@ import r.team.rollingbalance.rollingbalanceview.provider.provideDotView
 import r.team.rollingbalance.rollingbalanceview.utils.dp
 import java.text.DecimalFormat
 
+/**
+ * A custom `View` designed to display a rolling balance with the option to format
+ * and customize its appearance. This view can be used to represent balance information
+ * in various financial or numerical applications.
+ *
+ * The view automatically handles user input, formatting, and display of the balance.
+ * It is highly customizable through XML attributes and programmatic configuration.
+ */
+
 public class RollingBalanceView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
@@ -48,26 +57,75 @@ public class RollingBalanceView @JvmOverloads constructor(
         this.orientation = HORIZONTAL
     }
 
+    /**
+     * Sets a custom `DecimalFormat` formatter to control how the balance is displayed.
+     * This allows you to define how the balance value will be formatted (e.g., decimal places,
+     * grouping separators, etc.) before it's shown in the view.
+     *
+     * @param formatter The `DecimalFormat` to use for formatting the balance.
+     */
+
     public fun setFormatter(formatter: DecimalFormat) {
         this.formatter = formatter
     }
+
+    /**
+     * Sets the style for the digit views of the balance.
+     * This allows customization of how digits in the balance are displayed, such as their size,
+     * color, or font style.
+     *
+     * @param viewStyle The `DigitViewStyle` that defines the appearance of the digit views.
+     */
 
     public fun setDigitViewStyle(viewStyle: DigitViewStyle) {
         digitViewStyle = viewStyle
     }
 
+    /**
+     * Sets the style for the currency symbol view.
+     * This controls how the currency symbol (e.g., `$`, `€`) is displayed, including
+     * its size, color, and position relative to the balance.
+     *
+     * @param viewStyle The `CurrencyViewStyle` that defines the appearance of the currency symbol.
+     */
+
     public fun setCurrencyViewStyle(viewStyle: CurrencyViewStyle) {
         currencyViewStyle = viewStyle
     }
+
+    /**
+     * Sets the style for the dot view that separates the decimal part of the balance.
+     * This controls the appearance of the dot (e.g., `.`) used to separate the integer part
+     * from the decimal part of the balance value.
+     *
+     * @param viewStyle The `DotViewStyle` that defines the appearance of the dot view.
+     */
 
     public fun setDotViewStyle(viewStyle: DotViewStyle) {
         dotViewStyle = viewStyle
     }
 
+    /**
+     * Sets the style for the space view that separates the groups of digits in the balance.
+     * This controls the appearance of the space (or grouping separator) used to separate groups
+     * of digits, such as `1 000` for thousands.
+     *
+     * @param viewStyle The `SpaceViewStyle` that defines the appearance of the space view.
+     */
+
     public fun setSpaceViewStyle(viewStyle: SpaceViewStyle) {
         spaceViewStyle = viewStyle
     }
 
+    /**
+     * Sets the balance value to be displayed in the view. This method updates the displayed
+     * balance, and will reset and re-initialize the view if the new balance or currency is
+     * different from the current settings.
+     *
+     * @param newBalance The new balance value to be displayed.
+     * @param currency An optional currency symbol to be used with the balance. If `null`, the
+     * default currency symbol will be used.
+     */
 
     public fun setBalance(newBalance: Double, currency: String? = null) {
         if (isFirstSet) {
