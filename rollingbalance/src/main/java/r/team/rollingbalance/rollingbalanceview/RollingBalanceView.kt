@@ -48,28 +48,28 @@ public class RollingBalanceView @JvmOverloads constructor(
         this.orientation = HORIZONTAL
     }
 
-    fun setFormatter(formatter: DecimalFormat) {
+    public fun setFormatter(formatter: DecimalFormat) {
         this.formatter = formatter
     }
 
-    fun setDigitViewStyle(viewStyle: DigitViewStyle) {
+    public fun setDigitViewStyle(viewStyle: DigitViewStyle) {
         digitViewStyle = viewStyle
     }
 
-    fun setCurrencyViewStyle(viewStyle: CurrencyViewStyle) {
+    public fun setCurrencyViewStyle(viewStyle: CurrencyViewStyle) {
         currencyViewStyle = viewStyle
     }
 
-    fun setDotViewStyle(viewStyle: DotViewStyle) {
+    public fun setDotViewStyle(viewStyle: DotViewStyle) {
         dotViewStyle = viewStyle
     }
 
-    fun setSpaceViewStyle(viewStyle: SpaceViewStyle) {
+    public fun setSpaceViewStyle(viewStyle: SpaceViewStyle) {
         spaceViewStyle = viewStyle
     }
 
 
-    fun setBalance(newBalance: Double, currency: String? = null) {
+    public fun setBalance(newBalance: Double, currency: String? = null) {
         if (isFirstSet) {
             initBalanceView(newBalance, currency)
         } else {
