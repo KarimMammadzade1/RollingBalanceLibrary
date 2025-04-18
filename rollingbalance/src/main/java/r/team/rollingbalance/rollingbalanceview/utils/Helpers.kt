@@ -1,4 +1,4 @@
-package r.team.rollingbalancelibrary.rollingbalanceview.utils
+package r.team.rollingbalance.rollingbalanceview.utils
 
 import android.content.res.Resources
 

@@ -1,4 +1,4 @@
-package r.team.rollingbalancelibrary.rollingbalanceview.provider
+package r.team.rollingbalance.rollingbalanceview.provider
 
 import android.content.Context
 import android.graphics.Typeface
@@ -7,13 +7,13 @@ import android.view.Gravity
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
-import r.team.rollingbalancelibrary.rollingbalanceview.characters.Characters
+import r.team.rollingbalance.rollingbalanceview.characters.Characters
 
 
 private const val DEFAULT_FONT_FAMILY = "serif"
 
 
-fun Context.provideDotView(viewStyle: DotViewStyle) =
+public fun Context.provideDotView(viewStyle: DotViewStyle) =
     TextView(this).apply {
         text = Characters.getDot().toString()
         gravity = Gravity.CENTER
@@ -31,7 +31,7 @@ fun Context.provideDotView(viewStyle: DotViewStyle) =
         setTextSize(TypedValue.COMPLEX_UNIT_SP, viewStyle.textSize)
     }
 
-fun Context.provideCurrencyView(viewStyle: CurrencyViewStyle, currency: String) =
+public fun Context.provideCurrencyView(viewStyle: CurrencyViewStyle, currency: String) =
     TextView(this).apply {
         text = currency
         gravity = Gravity.CENTER
@@ -49,7 +49,7 @@ fun Context.provideCurrencyView(viewStyle: CurrencyViewStyle, currency: String) 
         setTextSize(TypedValue.COMPLEX_UNIT_SP, viewStyle.textSize)
     }
 
-fun Context.provideDigitView(viewStyle: DigitViewStyle) = TextView(this).apply {
+public fun Context.provideDigitView(viewStyle: DigitViewStyle) = TextView(this).apply {
     gravity = Gravity.CENTER
 
     this.typeface = when {

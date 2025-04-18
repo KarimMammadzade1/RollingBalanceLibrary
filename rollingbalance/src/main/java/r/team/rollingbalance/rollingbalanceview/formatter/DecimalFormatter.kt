@@ -1,9 +1,9 @@
-package r.team.rollingbalancelibrary.rollingbalanceview.formatter
+package r.team.rollingbalance.rollingbalanceview.formatter
 
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 
-object DecimalFormatter {
+public object DecimalFormatter {
     private const val PATTERN_BALANCE = "#,###.##"
     private const val PATTERN_SYMBOL_GROUPING_SEPARATOR = ' '
     private const val PATTERN_SYMBOL_DECIMAL_SEPARATOR = '.'

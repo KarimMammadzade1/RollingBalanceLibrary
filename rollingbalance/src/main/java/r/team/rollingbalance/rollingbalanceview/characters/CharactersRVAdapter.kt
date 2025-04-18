@@ -1,18 +1,18 @@
-package r.team.rollingbalancelibrary.rollingbalanceview.characters
+package r.team.rollingbalance.rollingbalanceview.characters
 
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import r.team.rollingbalancelibrary.rollingbalanceview.characters.Characters.indexOfChar
-import r.team.rollingbalancelibrary.rollingbalanceview.provider.DigitViewStyle
-import r.team.rollingbalancelibrary.rollingbalanceview.provider.provideDigitView
+import r.team.rollingbalance.rollingbalanceview.characters.Characters.indexOfChar
+import r.team.rollingbalance.rollingbalanceview.provider.DigitViewStyle
+import r.team.rollingbalance.rollingbalanceview.provider.provideDigitView
 
-class CharactersRVAdapter(private val digitViewStyle: DigitViewStyle) :
+internal class CharactersRVAdapter(private val digitViewStyle: DigitViewStyle) :
     RecyclerView.Adapter<CharactersRVAdapter.NumberViewHolder>() {
     private val itemList = Characters.createCharactersList()
 
-    inner class NumberViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+    internal inner class NumberViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         fun bindItem(item: Char) {
             if (view is TextView) {
                 view.text = item.toString()

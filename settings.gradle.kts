@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "RollingBalanceLibrary"
 include(":app")
- 
+include(":rollingbalance")

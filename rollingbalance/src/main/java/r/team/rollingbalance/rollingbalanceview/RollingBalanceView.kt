@@ -1,4 +1,4 @@
-package r.team.rollingbalancelibrary.rollingbalanceview
+package r.team.rollingbalance.rollingbalanceview
 
 import android.content.Context
 import android.util.AttributeSet
@@ -6,19 +6,20 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Space
 import android.widget.TextView
-import r.team.rollingbalancelibrary.rollingbalanceview.characters.Characters.isDot
-import r.team.rollingbalancelibrary.rollingbalanceview.characters.Characters.isSpace
-import r.team.rollingbalancelibrary.rollingbalanceview.characters.CharactersRVAdapter
-import r.team.rollingbalancelibrary.rollingbalanceview.provider.CurrencyViewStyle
-import r.team.rollingbalancelibrary.rollingbalanceview.provider.DigitViewStyle
-import r.team.rollingbalancelibrary.rollingbalanceview.provider.DotViewStyle
-import r.team.rollingbalancelibrary.rollingbalanceview.provider.SpaceViewStyle
-import r.team.rollingbalancelibrary.rollingbalanceview.provider.provideCurrencyView
-import r.team.rollingbalancelibrary.rollingbalanceview.provider.provideDotView
-import r.team.rollingbalancelibrary.rollingbalanceview.utils.dp
+import r.team.rollingbalance.rollingbalanceview.characters.Characters.isDot
+import r.team.rollingbalance.rollingbalanceview.characters.Characters.isSpace
+import r.team.rollingbalance.rollingbalanceview.characters.CharactersRVAdapter
+import r.team.rollingbalance.rollingbalanceview.component.RollingBalanceItemView
+import r.team.rollingbalance.rollingbalanceview.provider.CurrencyViewStyle
+import r.team.rollingbalance.rollingbalanceview.provider.DigitViewStyle
+import r.team.rollingbalance.rollingbalanceview.provider.DotViewStyle
+import r.team.rollingbalance.rollingbalanceview.provider.SpaceViewStyle
+import r.team.rollingbalance.rollingbalanceview.provider.provideCurrencyView
+import r.team.rollingbalance.rollingbalanceview.provider.provideDotView
+import r.team.rollingbalance.rollingbalanceview.utils.dp
 import java.text.DecimalFormat
 
-class RollingBalanceView @JvmOverloads constructor(
+public class RollingBalanceView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0

@@ -1,4 +1,4 @@
-package r.team.rollingbalancelibrary.rollingbalanceview
+package r.team.rollingbalance.rollingbalanceview.component
 
 import android.content.Context
 import android.util.AttributeSet
@@ -12,7 +12,8 @@ import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 
-class RollingBalanceItemView @JvmOverloads constructor(
+// TODO: find a way to hide from XML
+internal class RollingBalanceItemView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0

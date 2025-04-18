@@ -1,12 +1,12 @@
-package r.team.rollingbalancelibrary.rollingbalanceview.characters
+package r.team.rollingbalance.rollingbalanceview.characters
 
-object Characters {
+internal object Characters {
     private const val CHAR_SPACE = ' '
     private const val CHAR_DOT = '.'
     private const val CHAR_COMMA = ','
 
 
-    fun createCharactersList(
+    internal fun createCharactersList(
         includeSpace: Boolean = false,
         includeDot: Boolean = false,
         includeComma: Boolean = false
@@ -23,7 +23,7 @@ object Characters {
         }
     }
 
-    fun List<Char>.indexOfChar(char: Char): Int {
+    internal fun List<Char>.indexOfChar(char: Char): Int {
         return when (char) {
             CHAR_SPACE,
             CHAR_DOT,
@@ -39,13 +39,13 @@ object Characters {
         }
     }
 
-    fun Char.isSpace() = this == CHAR_SPACE
-    fun Char.isDot() = this == CHAR_DOT
-    fun Char.isComma() = this == CHAR_COMMA
+    internal fun Char.isSpace() = this == CHAR_SPACE
+    internal fun Char.isDot() = this == CHAR_DOT
+    internal fun Char.isComma() = this == CHAR_COMMA
 
-    fun getDot() = CHAR_DOT
-    fun getComma() = CHAR_COMMA
-    fun getSpace() = CHAR_SPACE
+    internal fun getDot() = CHAR_DOT
+    internal fun getComma() = CHAR_COMMA
+    internal fun getSpace() = CHAR_SPACE
 
 
 }

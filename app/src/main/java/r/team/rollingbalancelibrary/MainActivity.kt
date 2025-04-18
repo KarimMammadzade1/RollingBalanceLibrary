@@ -8,10 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import r.team.rollingbalancelibrary.rollingbalanceview.RollingBalanceView
-import r.team.rollingbalancelibrary.rollingbalanceview.formatter.DecimalFormatter
-import java.text.DecimalFormat
-import java.text.DecimalFormatSymbols
+import r.team.rollingbalance.rollingbalanceview.RollingBalanceView
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+        Roll
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.root_layout)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -39,7 +37,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initBalanceRoller() {
-        rollingBalanceView.setFormatter(DecimalFormatter.createBalanceDecimalFormatter())
+        rollingBalanceView.setFormatter(r.team.rollingbalance.rollingbalanceview.formatter.DecimalFormatter.createBalanceDecimalFormatter())
     }
 
     private fun handleClickListener() {
