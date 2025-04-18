@@ -19,16 +19,28 @@ class RollingBalanceItemView @JvmOverloads constructor(
 ) : RecyclerView(context, attrs, defStyleAttr) {
 
     init {
+        setItemAlpha()
         setLayoutParameters()
         setLayoutManager()
         disableManualScroll()
         setSnapHelper()
     }
 
+    private fun setItemAlpha(alpha: Float = 0F) {
+        this.alpha = alpha
+    }
+
+    fun showItemWithAlphaAnim() {
+        val animDuration =
+            context.resources.getInteger(android.R.integer.config_shortAnimTime).toLong()
+        this.animate().alpha(1F).setDuration(animDuration).start()
+
+    }
+
     private fun setLayoutParameters() {
         layoutParams = ViewGroup.LayoutParams(
             FrameLayout.LayoutParams.WRAP_CONTENT,
-            60
+            FrameLayout.LayoutParams.WRAP_CONTENT
         )
     }
 
@@ -44,7 +56,7 @@ class RollingBalanceItemView @JvmOverloads constructor(
 
     fun slowSmoothScrollTo(
         position: Int,
-        speedFactor: Float = 1000f,
+        speedFactor: Float = 600f,
         interpolator: Interpolator? = AccelerateInterpolator()
     ) {
         val linearLayoutManager = layoutManager as? LinearLayoutManager ?: return
@@ -55,17 +67,13 @@ class RollingBalanceItemView @JvmOverloads constructor(
             }
 
             override fun calculateSpeedPerPixel(displayMetrics: DisplayMetrics): Float {
-                // Base speed per pixel
                 val baseSpeed = speedFactor / displayMetrics.densityDpi
 
-                // If an interpolator is provided, adjust the speed per pixel based on the interpolation.
                 interpolator?.let {
-                    // Apply the interpolator based on the scroll progress (0 to 1)
                     val interpolatedSpeed = it.getInterpolation(baseSpeed)
                     return interpolatedSpeed
                 }
 
-                // Default to base speed if no interpolator is provided
                 return baseSpeed
             }
         }
@@ -75,6 +83,19 @@ class RollingBalanceItemView @JvmOverloads constructor(
     }
 
     private fun RecyclerView.disableManualScroll() {
-        this.setOnTouchListener { _, _ -> true }  // This consumes the touch event and prevents scrolling
+        this.setOnTouchListener { _, _ -> true }
+    }
+
+    fun adjustItemHeightWithChild() {
+        post {
+            val layoutManager = layoutManager as? LinearLayoutManager ?: return@post
+            val firstItemView = layoutManager.findViewByPosition(0)
+            val itemHeight = firstItemView?.height ?: return@post
+            val itemWidth = firstItemView.width
+
+            layoutParams.height = itemHeight
+            layoutParams.width = itemWidth
+            requestLayout()
+        }
     }
 }
