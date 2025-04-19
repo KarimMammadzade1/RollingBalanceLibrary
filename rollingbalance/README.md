@@ -6,7 +6,7 @@ A lightweight customizable rolling balance animation for Android 🎯
 ## Installation
 
 In your module-level build.gradle
-implementation("r.team.rollingbalance:rollingbalance:1.0.0")
+`implementation("com.github.KarimMammadzade1:RollingBalanceLibrary:v${LATEST_VERSION}")`
 
 ## Usage
 
