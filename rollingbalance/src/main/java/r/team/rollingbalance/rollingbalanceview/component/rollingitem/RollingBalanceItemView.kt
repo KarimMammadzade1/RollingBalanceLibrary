@@ -1,4 +1,4 @@
-package r.team.rollingbalance.rollingbalanceview.component
+package r.team.rollingbalance.rollingbalanceview.component.rollingitem
 
 import android.content.Context
 import android.util.AttributeSet
@@ -65,9 +65,9 @@ internal class RollingBalanceItemView @JvmOverloads constructor(
     }
 
 
-    fun slowSmoothScrollTo(
+    internal fun slowSmoothScrollTo(
         position: Int,
-        speedFactor: Float = 600f,
+        speedFactor: Float,
         interpolator: Interpolator? = AccelerateInterpolator()
     ) {
         val linearLayoutManager = layoutManager as? LinearLayoutManager ?: return

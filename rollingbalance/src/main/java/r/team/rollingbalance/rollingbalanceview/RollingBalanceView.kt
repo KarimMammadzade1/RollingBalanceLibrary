@@ -9,7 +9,8 @@ import android.widget.TextView
 import r.team.rollingbalance.rollingbalanceview.characters.Characters.isDot
 import r.team.rollingbalance.rollingbalanceview.characters.Characters.isSpace
 import r.team.rollingbalance.rollingbalanceview.characters.CharactersRVAdapter
-import r.team.rollingbalance.rollingbalanceview.component.RollingBalanceItemView
+import r.team.rollingbalance.rollingbalanceview.component.rollingitem.RollingBalanceItemView
+import r.team.rollingbalance.rollingbalanceview.component.rollingitem.RollingSpeed
 import r.team.rollingbalance.rollingbalanceview.provider.CurrencyViewStyle
 import r.team.rollingbalance.rollingbalanceview.provider.DigitViewStyle
 import r.team.rollingbalance.rollingbalanceview.provider.DotViewStyle
@@ -42,6 +43,7 @@ public class RollingBalanceView @JvmOverloads constructor(
     private val dotViews = mutableListOf<TextView>()
 
     private var formatter: DecimalFormat = DecimalFormat()
+    private var scrollSpeed: Float = RollingSpeed.MEDIUM
 
     private var digitViewStyle: DigitViewStyle = DigitViewStyle()
     private var currencyViewStyle: CurrencyViewStyle = CurrencyViewStyle()
@@ -68,6 +70,23 @@ public class RollingBalanceView @JvmOverloads constructor(
     public fun setFormatter(formatter: DecimalFormat) {
         this.formatter = formatter
     }
+
+    /**
+     * Sets a speed for rolling of digits.
+     */
+
+    public fun setScrollingSpeed(scrollSpeed: Float) {
+        this.scrollSpeed = scrollSpeed.coerceIn(300F, 1000F)
+    }
+
+    /**
+     * Sets a speed by percent for rolling of digits.
+     */
+    public fun setScrollSpeedPercent(percent: Int) {
+        val clampedPercent = percent.coerceIn(1, 100)
+        scrollSpeed = 1000F - (700F * (clampedPercent / 100F))
+    }
+
 
     /**
      * Sets the style for the digit views of the balance.
@@ -236,7 +255,7 @@ public class RollingBalanceView @JvmOverloads constructor(
             recyclerViews.getOrNull(index)?.let { recyclerView ->
                 val pos = recyclerView.positionOfChar(char)
                 recyclerView.post {
-                    recyclerView.slowSmoothScrollTo(pos)
+                    recyclerView.slowSmoothScrollTo(pos, scrollSpeed)
                 }
             }
                 ?: throw Exception("RollingBalanceView setFormattedBalance RV is null on index $index")
