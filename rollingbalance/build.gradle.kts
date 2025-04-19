@@ -2,7 +2,6 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     id("maven-publish")
-
 }
 
 android {
@@ -11,8 +10,6 @@ android {
 
     defaultConfig {
         minSdk = 24
-
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -26,12 +23,18 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     kotlinOptions {
         jvmTarget = "11"
+    }
+
+    publishing {
+        singleVariant("release")
     }
 }
 
@@ -43,4 +46,24 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+
+                groupId = "r.team.rollingbalance"
+                artifactId = "rollingbalance"
+                version = "1.0.0"
+            }
+        }
+        repositories {
+            maven {
+                name = "local"
+                url = rootProject.layout.buildDirectory.dir("repos").get().asFile.toURI()
+            }
+        }
+    }
 }
