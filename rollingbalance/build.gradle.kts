@@ -55,7 +55,7 @@ val properties = Properties()
 properties.load(localProperties.inputStream())
 
 val repositoryUrl = properties.getProperty("REPOSITORY_URL")
-val username = properties.getProperty("USERNAME")
+val usernameField = properties.getProperty("USERNAME")
 val token = properties.getProperty("TOKEN")
 
 afterEvaluate {
@@ -74,7 +74,7 @@ afterEvaluate {
                 name = "GitHubPackages"
                 url = uri(repositoryUrl)
                 credentials {
-                    username = username
+                    username = usernameField
                     password = token
                 }
             }
