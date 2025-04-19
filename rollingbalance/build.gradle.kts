@@ -3,7 +3,6 @@ import java.util.Properties
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    id("maven-publish")
 }
 
 android {
@@ -34,10 +33,6 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-
-    publishing {
-        singleVariant("release")
-    }
 }
 
 dependencies {
@@ -48,36 +43,4 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-}
-
-val localProperties = rootProject.file("local.properties")
-val properties = Properties()
-properties.load(localProperties.inputStream())
-
-val repositoryUrl = properties.getProperty("REPOSITORY_URL")
-val usernameField = properties.getProperty("USERNAME")
-val token = properties.getProperty("TOKEN")
-
-afterEvaluate {
-    publishing {
-        publications {
-            create<MavenPublication>("release") {
-                from(components["release"])
-
-                groupId = "r.team.rollingbalance"
-                artifactId = "rollingbalance"
-                version = "1.0.0"
-            }
-        }
-        repositories {
-            maven {
-                name = "GitHubPackages"
-                url = uri(repositoryUrl)
-                credentials {
-                    username = usernameField
-                    password = token
-                }
-            }
-        }
-    }
 }
