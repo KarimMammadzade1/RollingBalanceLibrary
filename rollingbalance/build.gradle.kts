@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
@@ -48,6 +50,14 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 }
 
+val localProperties = rootProject.file("local.properties")
+val properties = Properties()
+properties.load(localProperties.inputStream())
+
+val repositoryUrl = properties.getProperty("REPOSITORY_URL")
+val username = properties.getProperty("USERNAME")
+val token = properties.getProperty("TOKEN")
+
 afterEvaluate {
     publishing {
         publications {
@@ -61,8 +71,12 @@ afterEvaluate {
         }
         repositories {
             maven {
-                name = "local"
-                url = rootProject.layout.buildDirectory.dir("repos").get().asFile.toURI()
+                name = "GitHubPackages"
+                url = uri(repositoryUrl)
+                credentials {
+                    username = username
+                    password = token
+                }
             }
         }
     }
